@@ -1,2 +1,4 @@
 # TicTacToe
-Tres en Raya simple por terminal
+Tres en Raya simple
+
+
