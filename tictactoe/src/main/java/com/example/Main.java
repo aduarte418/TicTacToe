@@ -1,6 +1,6 @@
 package com.example;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -40,17 +40,17 @@ public class Main {
         scanner.close();
     }
 
-    // Método auxiliar para leer un entero de forma segura por consola
+    // Método para depurar la entrada de números enteros válidos para las coordenadas
     private static int leerCoordenada(Scanner scanner, String mensaje) {
         int valor = -1;
         boolean valido = false;
         while (!valido) {
             System.out.print(mensaje);
-            if (scanner.hasNextInt()) {
+            try {
                 valor = scanner.nextInt();
                 valido = true;
-            } else {
-                System.out.println("Error: Debes introducir un número entero válido.");
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Introduce un número entero válido.");
                 scanner.next();
             }
         }

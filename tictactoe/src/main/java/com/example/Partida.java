@@ -23,7 +23,11 @@ public class Partida {
         if (exito) {
             // Si la jugada actual no es ganadora, cambiar turno
             if (!this.tablero.gana(fichaActual)) {
-                this.turnoActual = (this.turnoActual == Ficha.valorFicha.X) ? Ficha.valorFicha.O : Ficha.valorFicha.X;
+                if (this.turnoActual == Ficha.valorFicha.X) {
+                    this.turnoActual = Ficha.valorFicha.O;
+                } else {
+                    this.turnoActual = Ficha.valorFicha.X;
+                }
             }
         } else {
             System.out.println("No se puede colocar la ficha en (" + x + ", " + y + "): casilla ocupada o posición no válida.");

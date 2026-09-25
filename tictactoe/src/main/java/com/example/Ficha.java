@@ -28,13 +28,21 @@ public class Ficha {
 
     // Método para pasar al siguiente turno 
     public valorFicha siguiente(valorFicha actual) {
-        return (actual == valorFicha.X) ? valorFicha.O : valorFicha.X;
+        if (actual == valorFicha.X) {
+            return valorFicha.O;
+        } else {
+            return valorFicha.X;
+        }
     }
 
     // Método toString
     @Override
     public String toString() {
-        return valor != null ? valor.name() : "";
+        if (valor != null) {
+            return valor.name();
+        } else {
+            return "";
+        }
     }
 }
 

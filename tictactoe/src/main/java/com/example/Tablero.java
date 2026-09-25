@@ -35,6 +35,7 @@ public class Tablero {
         return true;
     }
 
+    // Método para comprobar si el tablero está lleno
     public boolean estaLleno() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -46,6 +47,7 @@ public class Tablero {
         return true;
     }
 
+    // Métodos para verificar ganador y de qué manera se ha ganado
     public boolean gana(Ficha.valorFicha ficha) {
         if (ficha == null) {
             return false;
@@ -54,7 +56,7 @@ public class Tablero {
                ganaDiagonalDirecta(ficha) || ganaDiagonalIndirecta(ficha);
     }
 
-    protected boolean ganaHorizontal(Ficha.valorFicha ficha) {
+    private boolean ganaHorizontal(Ficha.valorFicha ficha) {
         if (ficha == null) return false;
         char c = ficha.name().charAt(0);
         for (int i = 0; i < 3; i++) {
@@ -65,7 +67,7 @@ public class Tablero {
         return false;
     }
 
-    protected boolean ganaVertical(Ficha.valorFicha ficha) {
+    private boolean ganaVertical(Ficha.valorFicha ficha) {
         if (ficha == null) return false;
         char c = ficha.name().charAt(0);
         for (int j = 0; j < 3; j++) {
@@ -76,30 +78,29 @@ public class Tablero {
         return false;
     }
 
-    protected boolean ganaDiagonalDirecta(Ficha.valorFicha ficha) {
+    private boolean ganaDiagonalDirecta(Ficha.valorFicha ficha) {
         if (ficha == null) return false;
         char c = ficha.name().charAt(0);
         return this.matrizTablero[0][0] == c && this.matrizTablero[1][1] == c && this.matrizTablero[2][2] == c;
     }
 
-    protected boolean ganaDiagonalIndirecta(Ficha.valorFicha ficha) {
+    private boolean ganaDiagonalIndirecta(Ficha.valorFicha ficha) {
         if (ficha == null) return false;
         char c = ficha.name().charAt(0);
         return this.matrizTablero[0][2] == c && this.matrizTablero[1][1] == c && this.matrizTablero[2][0] == c;
     }
 
-    // Método toString para representar el tablero visualmente
+    // Método toString para representar el tablero
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("-------------\n");
+        String resultado = "-------------\n";
         for (int i = 0; i < 3; i++) {
-            sb.append("| ");
+            resultado = resultado + "| ";
             for (int j = 0; j < 3; j++) {
-                sb.append(matrizTablero[i][j]).append(" | ");
+                resultado = resultado + matrizTablero[i][j] + " | ";
             }
-            sb.append("\n-------------\n");
+            resultado = resultado + "\n-------------\n";
         }
-        return sb.toString();
+        return resultado;
     }
 }
